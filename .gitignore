@@ -1,0 +1,16 @@
+BL/.vs/
+BL/BL.Core/obj/
+BL/BL.Core/bin/
+BL/BL.Data/obj/
+BL/BL.Data/bin/
+BL/BL.Services/obj/
+BL/BL.Services/bin/
+BL/BL.Setup/obj/
+BL/BL.Setup/bin/
+BL/BL.Tests/obj/
+BL/BL.Tests/bin/
+BL/BL.WebAPI/obj/
+BL/BL.WebAPI/bin/
+BL/BL.WebSite/obj/
+BL/BL.WebSite/bin/
+*.user
