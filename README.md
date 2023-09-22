@@ -39,15 +39,15 @@ This solution runs on .NET 6 and SQL Server Express
 
 ## Architecture
 
-| Project       | Type                 | Description                                                          |
-| ------------- | -------------------- | -------------------------------------------------------------------- |
-| BL.Core       | Class Library        | Common project with Business Entities                                |
-| BL.Data       | Class Library        | Data Access Layer, contains the repositories                         |
-| BL.Services   | Class Library        | Business Logic Layer, contains business rules and validations        |
-| BL.Setup      | ASP.NET Core Web App | Setup of the Database, contains scripts for the db schema            |
-| BL.Tests      | xUnit Test           | Contains the Unit Tests for the Business Logic                       |
-| BL.WebAPI     | ASP.NET Core Web API | WebAPI Project (MVC)                                                 |
-| BL.WebSite    | ASP.NET Core Web App | Front-End, contains Razor pages with jQuery for the calls to the API |
+| Project       | Type                 | Description                                                           |
+| ------------- | -------------------- | --------------------------------------------------------------------- |
+| BL.Core       | Class Library        | Common project with Business Entities.                                |
+| BL.Data       | Class Library        | Data Access Layer, contains the repositories. Uses Dapper.            |
+| BL.Services   | Class Library        | Business Logic Layer, contains business rules and validations.        |
+| BL.Setup      | ASP.NET Core Web App | Setup of the Database, contains scripts for the db schema.            |
+| BL.Tests      | xUnit Test           | Contains the Unit Tests for the Business Logic.                       |
+| BL.WebAPI     | ASP.NET Core Web API | WebAPI Project (MVC)                                                  |
+| BL.WebSite    | ASP.NET Core Web App | Front-End, contains Razor pages with jQuery for the calls to the API. |
 
 
 ## Setup the Database
@@ -71,9 +71,22 @@ This will open two browser windows, one with the WebAPI running Swagger, and the
 
 Then, you can create a new user, log in, and manage the products.
 
-## Final notes
-- Integration tests for repository are not included.
-- WebAPI tests are not included, because requires more time for configuration and mocking of the Authorization. 
+## Thought process
 
+### Database
+Because the short deadline and the nature of the prototype, first I tried to use a SQL Server Database Project and publishing the Database as LocalDB, but I had multiple issues, eg: the .mdf should be accesible from the WebAPI project, so I tried to publis to the folder app_data in the WebAPI project, but I had permissions and routing issues.
+
+Then, I tried to create directly the LocalDB file in the WebAPI project, but the template for the item Service-based Database is not available for this type of projects.
+
+Finally I decided to use a ASP.NET Core Web App project with logic that I already use for my different projects. I created the schema of the database in SQL Server Management Studio, generated the sql scripts and use these scripts in the Setup Project.
+
+### TDD
+I started with TDD for the business logic validations, without any issues. 
+
+But for testing the Repository I needed to configure Dapper and because I'm more used to Entity Framework and ADO.NET, and it's the first time I use Dapper for Data Access, the time was not going to be enough for all the required configurations. So, I'm not including TDD unit tests for the Repository.
+
+Same thing with WebAPI tests, because requires more time for configuration and mocking of the Authorization.
+
+In the end it was a very interesting challenge and helped me to work for the first time with Dapper, which I had wanted to do for a long time.
 
 > Last update: 2023 09 22
