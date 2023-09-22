@@ -74,11 +74,11 @@ Then, you can create a new user, log in, and manage the products.
 ## Thought process
 
 ### Database
-Because the short deadline and the nature of the prototype, first I tried to use a SQL Server Database Project and publishing the Database as LocalDB, but I had multiple issues, eg: the .mdf should be accesible from the WebAPI project, so I tried to publis to the folder app_data in the WebAPI project, but I had permissions and routing issues.
+Because the short deadline and the nature of the prototype, first I tried to use a _SQL Server Database Project_ and publishing the Database as _LocalDB_, but I had multiple issues, eg: the .mdf should be accesible from the WebAPI project, so I tried to publish to the folder _app_data_ in the WebAPI project, but I had permissions and routing issues.
 
-Then, I tried to create directly the LocalDB file in the WebAPI project, but the template for the item Service-based Database is not available for this type of projects.
+Then, I tried to create directly the _LocalDB_ file in the WebAPI project, but the template for the item Service-based Database is not available for this type of projects.
 
-Finally I decided to use a ASP.NET Core Web App project with logic that I already use for my different projects. I created the schema of the database in SQL Server Management Studio, generated the sql scripts and use these scripts in the Setup Project.
+Finally I decided to use a ASP.NET Core Web App project with logic that I already use for my different projects. I created the schema of the database in SQL Server Management Studio, generated the sql scripts and use these scripts in the Setup Project that uses _SQL Server Express_.
 
 ### TDD
 I started with TDD for the business logic validations, without any issues. 
