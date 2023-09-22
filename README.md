@@ -63,7 +63,10 @@ The **BL.Setup** and **the BL.WebAPI** projects have configured the Connection S
 ```
 
 ## Running the WebAPI and WebSite
-Right click on the solution, and select 'Configure Startup projects...', select the option **Multiple startup projects:** and set the action **Start** for the projects **BL.WebAPI** and **BL.WebSite**. Finally, Start (F5) to run the projects. 
+Right click on the solution, and select 'Configure Startup projects...', select the option **Multiple startup projects:** and set the action **Start** for the projects **BL.WebAPI** and **BL.WebSite** and click on **OK**. 
+
+Finally, Start (F5) to run the projects. 
+
 This will open two browser windows, one with the WebAPI running Swagger, and the other with the WebSite.
 
 Then, you can create a new user, log in, and manage the products.
